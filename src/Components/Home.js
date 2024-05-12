@@ -58,25 +58,32 @@ const Home = () => {
 
     async function fetchTrees() {
         let temp = []
-        let treeTemp = []
-        let _now = {}
-        const querySnapshot = await getDocs(collection(db, "trees"));
-        querySnapshot.forEach((doc) => {
-            const data = doc.data()
-            temp.push(data)
-            _now[data.type] = [ data.name]
-            // setCountState({...countState, [data.type]: countState[data.type] + 1 })
-            if (data.type === "Trees") {
-                treeTemp.push(data)
-            }
-        });
+        let treeTemp = [{
+            name: "name",
+            scientificName: "namesss",
+            ext1: "",
+            ext2: "",
+            ext3: "",
+            ext4: "",
+            uses: "uses",
+            botanicalDes: "botanicalDes",
+            commonName: "commo",
+            tamilName: "tamil",
+            scientificName: "scientificName",
+            family: "family",
+            kingdom: "kingdom",
+            phylum: "phyl",
+            class: "class",
+            order: "order",
+            genus: "genus",
+            species: "species"
+        }]
+
             setTreeList(treeTemp)
-            console.log(_now)
         
         setPaginationTreeList(treeTemp)
         setStaticList(temp)
 
-        // console.log(staticList)
     }
 
 
@@ -94,14 +101,11 @@ const Home = () => {
 
                         <p style={{ color: "#ffff" }}>Click to Scroll</p>
 
-                        {/* <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}> */}
-
                         <img src={Downarrow} style={{ alignItems: 'center', justifyContent: 'center', width: 32, height: 32 }} />
 
-                        {/* </div> */}
 
 
-                    </div>
+                    </div>  
                 )}
 
             </div>
