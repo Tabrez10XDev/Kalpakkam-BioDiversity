@@ -114,10 +114,9 @@ const Butterfly = () => {
               WebkitTextFillColor: "transparent"
             }}>
           
-          Biodiversity of SRM
+          Biodiversity of IGCAR
     </Typography>  
-      {/* <p style={{fontSize:20,fontFamily:'Helvetica',fontWeight:600,color:'#2525252'}}>Biodiversity of SRM</p> */}
-      <p style={{fontSize:16,fontFamily:'Helvetica',fontWeight:400,color:'#767676',marginRight:20,marginLeft:20,textAlign:'center'}}>"Unlock the Secrets of Nature <br/>Explore SRM University's Green Campus with a Simple Scan!" </p>
+      <p style={{fontSize:16,fontFamily:'Helvetica',fontWeight:400,color:'#767676',marginRight:20,marginLeft:20,textAlign:'center'}}>"Unlock the Secrets of Nature <br/>Explore IGCAR's Green Campus with a Simple Scan!" </p>
       </div>
       </div>  
       

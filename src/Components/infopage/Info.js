@@ -5,6 +5,7 @@ import Speech from 'react-speech';
 import TextToSpeech from './TextToSpeech';
 import Marquee from "react-fast-marquee";
 import Classification from './Classification';
+import { TREES } from '../../data';
 import { Button } from "@mui/material";
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
@@ -38,25 +39,36 @@ const Info = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [tree, setTree] = useState({})
 
-  const [src, setSrc] = useState([
-    ("https://biodiversity.srmist.edu.in/assets/images/" + encodeURIComponent(tree.name) + "." + encodeURIComponent(tree.ext1)).toString().replace("jpg", "jpeg"),
-    ("https://biodiversity.srmist.edu.in/assets/images/" + encodeURIComponent(tree.name) + "2." + encodeURIComponent(tree.ext2)).toString().replace("jpg", "jpeg"),
-    ("https://biodiversity.srmist.edu.in/assets/images/" + encodeURIComponent(tree.name) + "3." + encodeURIComponent(tree.ext3)).toString().replace("jpg", "jpeg"),
-    ("https://biodiversity.srmist.edu.in/assets/images/" + encodeURIComponent(tree.name) + "4." + encodeURIComponent(tree.ext4)).toString().replace("jpg", "jpeg"),
-  ])
+  useEffect(()=>{
+    console.log(searchParams.get("tree"));
+    setTree(TREES.find(obj => obj?.name === searchParams.get("tree")))
+  })
 
-  useEffect(() => {
-    console.log(("https://biodiversity.srmist.edu.in/assets/images/" + encodeURIComponent(tree.name) + "." + encodeURIComponent(tree.ext1)).toString().replace("jpg", "jpeg"),
-    )
-    if (tree.name !== undefined) {
-      setSrc([
-        ("https://biodiversity.srmist.edu.in/assets/images/" + encodeURIComponent(tree.name.trim()) + "." + encodeURIComponent(tree.ext1)).toString().replace("jpg", "jpeg"),
-        ("https://biodiversity.srmist.edu.in/assets/images/" + encodeURIComponent(tree.name) + "2." + encodeURIComponent(tree.ext2)).toString().replace("jpg", "jpeg"),
-        ("https://biodiversity.srmist.edu.in/assets/images/" + encodeURIComponent(tree.name) + "3." + encodeURIComponent(tree.ext3)).toString().replace("jpg", "jpeg"),
-        ("https://biodiversity.srmist.edu.in/assets/images/" + encodeURIComponent(tree.name) + "4." + encodeURIComponent(tree.ext4)).toString().replace("jpg", "jpeg"),
-      ])
+  const getImage = (imagePath) => {
+    try {
+      let arr = []
+      try{ arr.push(require(`../assets/${imagePath.trim()}/one.jpg`))}catch{}
+      try{ arr.push(require(`../assets/${imagePath.trim()}/two.jpg`))}catch{}
+      try{ arr.push(require(`../assets/${imagePath.trim()}/three.jpg`))}catch{}
+      try{ arr.push(require(`../assets/${imagePath.trim()}/four.jpg`))}catch{}
+
+
+      console.log(arr);
+      return arr 
+
+    } catch (err) {
+      return [require('../assets/banner1.png')]; // Path to your placeholder image
     }
-  }, [tree])
+  };
+
+
+  const [src, setSrc] = useState([])
+
+  useEffect(()=>{
+setSrc(getImage(TREES.find(obj => obj?.name === searchParams.get("tree"))?.name))
+  },[tree])
+
+
 
   const myRef = React.createRef();
 
@@ -83,24 +95,7 @@ const Info = () => {
     }
   };
 
-  useEffect(() => {
-    if (location.state !== null) {
-      setTree(location.state)
-    } else {
-      const tree = searchParams.get("tree")
-      console.log("******")
-      console.log(tree)
-      const docRef = doc(db, "trees", tree);
-      getDoc(docRef).then((doc) => {
-        setTree(doc.data())
-      })
-      increaseFieldByOne(tree)
 
-
-    }
-
-
-  }, [])
 
   const [index, setIndex] = useState(0)
   const products = [{}]
@@ -137,7 +132,7 @@ const Info = () => {
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'left', marginLeft: 16 }} >
             <img src={Locationicon} style={{ width: 32, height: 32 }} />
-            <p style={{ fontSize: 14, color: '#656565' }}>{tree.location != "" ? tree.location : "Location not provided"}</p>
+            <p style={{ fontSize: 14, color: '#656565' }}>{tree.location ? tree.location : "Location not provided"}</p>
           </div>
 
           <div className={'infobox'} style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -210,7 +205,6 @@ const Info = () => {
         <Classification title='Species' class={tree['species']} />
       </Marquee>
 
-      {tree.modalUri !== "" && tree.modalUri !== undefined && <Tabular />}
     </div>
   );
 

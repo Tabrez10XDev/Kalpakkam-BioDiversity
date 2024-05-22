@@ -12,10 +12,23 @@ const Responsivecard=(props)=>{
 
     
     let navigate = useNavigate();
+
+    const getImage = (imagePath) => {
+        try {
+          return require(`./assets/${imagePath.trim()}/one.jpg`);
+        } catch (err) {
+          return require('./assets/banner1.png'); // Path to your placeholder image
+        }
+      };
+      
+
+
+    const imageSrc = getImage(props.data.name);
+
     return(
         
         <div className="cardui" onClick={()=>{
-            navigate("/Info", {state: props.data});
+            navigate(`/Info?tree=${props.data.name}`);
           }} style={{width:174,height:240,justifyContent:'center',backgroundColor:'#FFFF',borderRadius:14,position:'relative',shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -33,7 +46,7 @@ const Responsivecard=(props)=>{
 
                     <div className="imgcontainer" style={{width:174, height:64}}>
                         
-                    <img src={("https://biodiversity.srmist.edu.in/assets/images/" + encodeURIComponent(props.data.name.trim()) + "." + encodeURIComponent(props.data.ext1)).toString().replace("jpg","jpeg")} style={{ width: 174, borderTopLeftRadius: 20, borderTopRightRadius: 20, height:"200%", objectFit:'cover' }} />
+                    <img src={imageSrc} style={{ width: 174, borderTopLeftRadius: 20, borderTopRightRadius: 20, height:"200%", objectFit:'cover' }} />
                     </div>
                 
                     <p style={{fontSize:16,color:"#252525",fontWeight:500,position:'absolute',top:"55%",marginLeft:16}}>{props.data.name}</p>

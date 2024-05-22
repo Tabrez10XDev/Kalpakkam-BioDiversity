@@ -16,6 +16,7 @@ import Downarrow from "./assets/down-arrow.svg";
 import { useState } from "react";
 import '../App.css'
 import { db } from "../FirebaseConfig";
+import { TREES } from "../data";
 import { useEffect } from "react";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 
@@ -32,9 +33,9 @@ const Home = () => {
 
     const alphabet = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     const [stackIndex, setStackIndex] = useState(0)
-    const [treeList, setTreeList] = useState([])
-    const [staticList, setStaticList] = useState([])
-    const [paginationTreeList, setPaginationTreeList] = useState([]) 
+    const [treeList, setTreeList] = useState(TREES)
+    const [staticList, setStaticList] = useState(TREES)
+    const [paginationTreeList, setPaginationTreeList] = useState(TREES) 
     const [page, setPage] = useState(1)
     const [countState, setCountState] = useState({})
 
@@ -56,40 +57,7 @@ const Home = () => {
         });
     };
 
-    async function fetchTrees() {
-        let temp = []
-        let treeTemp = [{
-            name: "name",
-            scientificName: "namesss",
-            ext1: "",
-            ext2: "",
-            ext3: "",
-            ext4: "",
-            uses: "uses",
-            botanicalDes: "botanicalDes",
-            commonName: "commo",
-            tamilName: "tamil",
-            scientificName: "scientificName",
-            family: "family",
-            kingdom: "kingdom",
-            phylum: "phyl",
-            class: "class",
-            order: "order",
-            genus: "genus",
-            species: "species"
-        }]
-
-            setTreeList(treeTemp)
-        
-        setPaginationTreeList(treeTemp)
-        setStaticList(temp)
-
-    }
-
-
-    useEffect(() => {
-        fetchTrees()
-    }, [])
+  
 
     return (
 
@@ -118,8 +86,8 @@ const Home = () => {
                 <Button onClick={() => {
                     setStackIndex(0)
                     setPage(1)
-                    setPaginationTreeList(staticList.filter((tree) => tree.type === "Trees"))
-                    setTreeList(staticList.filter((tree) => tree.type === "Trees"))
+                    setPaginationTreeList(staticList.filter((tree) => tree.type === "tree"))
+                    setTreeList(staticList.filter((tree) => tree.type === "tree"))
                 }} variant={stackIndex === 0 ? "contained" : "outlined"} style={stackIndex === 0 ? styles.selected : styles.unSelected}>Trees</Button>
                 <Button onClick={() => {
                     setStackIndex(1)
