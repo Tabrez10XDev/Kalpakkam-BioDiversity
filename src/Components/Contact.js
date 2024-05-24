@@ -5,8 +5,6 @@ import Pinky from "./assets/pinky.JPG";
 import Woodie from "./assets/woodie.png";
 import { useState } from 'react'
 import '../App.css'
-import { db } from "../FirebaseConfig";
-import { doc, setDoc, addDoc, collection } from "firebase/firestore";
 import Contactcover from './assets/contactbg.JPG'
 
 const Contact = () => {
@@ -15,32 +13,7 @@ const Contact = () => {
     const [comment, setComment] = useState("")
 
     async function uploadComment() {
-        try {
-            if (name.trim().length > 0 && comment.trim().length > 0) {
-
-                const today = new Date();
-                const yyyy = today.getFullYear();
-                let mm = today.getMonth() + 1; // Months start at 0!
-                let dd = today.getDate();
-
-                if (dd < 10) dd = '0' + dd;
-                if (mm < 10) mm = '0' + mm;
-
-                const formattedToday = dd + '/' + mm + '/' + yyyy;
-
-                const userObj = {
-                    name: name,
-                    comment: comment,
-                    time: formattedToday
-                }
-                const docRef = await addDoc(collection(db, "feedbacks"), userObj);
-                setComment("")
-                setName("")
-            }
-        } catch (e) {
-            console.error(e);
-
-        }
+     
     }
 
     return (

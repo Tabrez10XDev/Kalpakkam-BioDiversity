@@ -1,5 +1,4 @@
 import React from "react";
-import Woodie from '../Components/assets/woodie.png'
 import trees from '../Components/assets/treecount.png'
 import palm from '../Components/assets/palm.svg'
 import climbers from '../Components/assets/climbers.svg'
@@ -8,15 +7,11 @@ import flowers from '../Components/assets/flowering-shrubs.svg'
 import foliage from '../Components/assets/foliageshrubs.svg'
 import medicine from '../Components/assets/medicinal-plant.svg'
 import indoorplants from '../Components/assets/indoor-pants.svg'
-import grasses from '../Components/assets/grasses.svg'
-import { db } from "../FirebaseConfig";
 import Countcover from "./assets/counttree.jpg"
 
 import { useEffect, useState } from "react";
-import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 
 import CountUp from 'react-countup';
-import { register } from "react-scroll/modules/mixins/scroller";
 
 
 
@@ -24,10 +19,7 @@ const Countsection=()=>{
   const [countState, setCountState] = useState({})
 
   async function fetchTotalCount() {
-    const docRef = doc(db, "stats", "totalCount");
-    getDoc(docRef).then((doc) => {
-      setCountState(doc.data())
-    })
+    
   }
 
 

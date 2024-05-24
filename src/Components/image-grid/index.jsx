@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 // External
-import { layoutId } from "framer-motion";
 import { useLockBodyScroll } from "react-use";
 
 // Components
@@ -10,8 +9,6 @@ import SinglePicture from "./single-picture";
 
 import { Grid } from "./styles";
 
-import { db } from "../../FirebaseConfig";
-import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 
 
 const ImageGrid = ({ selectedImage, setSelectedImage }) => {
@@ -19,14 +16,7 @@ const ImageGrid = ({ selectedImage, setSelectedImage }) => {
   const [places,setPlaces] = useState([{}])
 
   async function fetchPlaces() {
-    let placesTemp = []
-    const querySnapshot = await getDocs(collection(db, "places"));
-    querySnapshot.forEach((doc) => {
-        const data = doc.data()
-        placesTemp.push(data)        
-    });
-    console.log(placesTemp);
-        setPlaces(placesTemp)
+ 
     
 }
 

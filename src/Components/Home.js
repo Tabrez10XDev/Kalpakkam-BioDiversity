@@ -4,10 +4,7 @@ import { Butterflybg } from "./Canvas";
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
 import { Button } from "@mui/material";
-import tree from "./assets/treebg.jpg";
-import Woodie from '../Components/assets/woodie.png'
 import Card from './Card';
-import Responsive from './Responsivecard';
 import { useMediaQuery } from 'react-responsive'
 import Responsivecard from "./Responsivecard";
 import { DeviceSize } from "../Responsive/index";
@@ -15,10 +12,7 @@ import arrow from "./assets/arrow.svg";
 import Downarrow from "./assets/down-arrow.svg";
 import { useState } from "react";
 import '../App.css'
-import { db } from "../FirebaseConfig";
 import { TREES } from "../data";
-import { useEffect } from "react";
-import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 
 // import ScrollButton from 'react-scroll-button';
 

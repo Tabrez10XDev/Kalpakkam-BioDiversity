@@ -6,12 +6,10 @@ import TextToSpeech from './TextToSpeech';
 import Marquee from "react-fast-marquee";
 import Classification from './Classification';
 import { TREES } from '../../data';
-import { Button } from "@mui/material";
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 // import Colors from './Colors'
 import DetailsThumb from './DetailsThumb';
-import Tabular from './Tabular';
 import Chip from '@mui/material/Chip';
 import Woodie from '../assets/woodie.png'
 import Banner1 from '../assets/banner1.png';
@@ -20,10 +18,7 @@ import Banner3 from '../assets/banner3.png';
 import Banner4 from '../assets/banner4.png';
 import Locationicon from '../assets/location.svg';
 import { useSearchParams } from 'react-router-dom';
-import firebase from 'firebase/app';
 import 'firebase/firestore';
-import { doc, getDoc, collection, getDocs, updateDoc, increment } from "firebase/firestore";
-import { db } from '../../FirebaseConfig';
 
 import { useNavigate } from "react-router-dom";
 
@@ -83,17 +78,6 @@ setSrc(getImage(TREES.find(obj => obj?.name === searchParams.get("tree"))?.name)
   };
 
 
-  const increaseFieldByOne = async (fieldToUpdate) => {
-    try {
-      const docRef = doc(db, 'stats', "scanned");
-      await updateDoc(docRef, {
-        [fieldToUpdate]: increment(1),
-      });
-      console.log('Field updated successfully!');
-    } catch (error) {
-      console.error('Error updating field:', error);
-    }
-  };
 
 
 

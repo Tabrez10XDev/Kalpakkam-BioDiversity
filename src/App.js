@@ -12,7 +12,6 @@ import {
  } from "react-router-dom";
 
 
-import InteractiveMap from './Components/InteractiveMap';
 
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
         <Route path="/Info" element={<Info/>} />
         <Route path="/imageview" element={<Imageviewer/>} />
         <Route path="/map" element={<Map/>} />
-        <Route path="/Greenmap" element={<InteractiveMap/>} />
 
       
       
