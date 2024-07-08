@@ -19,9 +19,9 @@ import {
         <div>
         <Navbar/>
         <Home/>
-        <Countsection/>
+        {/* <Countsection/> */}
         <About/>
-        <Contact/>
+        {/* <Contact/> */}
         <Footer/>
         </div>
     )

@@ -18,7 +18,6 @@ import Banner3 from '../assets/banner3.png';
 import Banner4 from '../assets/banner4.png';
 import Locationicon from '../assets/location.svg';
 import { useSearchParams } from 'react-router-dom';
-import 'firebase/firestore';
 
 import { useNavigate } from "react-router-dom";
 
@@ -84,8 +83,6 @@ setSrc(getImage(TREES.find(obj => obj?.name === searchParams.get("tree"))?.name)
   const [index, setIndex] = useState(0)
   const products = [{}]
   return (
-
-
     <div className="app"
     >
       <div className="details"
@@ -104,15 +101,9 @@ setSrc(getImage(TREES.find(obj => obj?.name === searchParams.get("tree"))?.name)
         <div>
           <DetailsThumb images={src} tab={handleTab} myRef={myRef} />
         </div>
-
-
         <div className="box">
 
-
-
-
           {/* <Colors colors={item.colors} /> */}
-
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'left', marginLeft: 16 }} >
             <img src={Locationicon} style={{ width: 32, height: 32 }} />

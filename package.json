@@ -45,11 +45,13 @@
     "react-spring": "^9.7.1",
     "react-spring-3d-carousel": "^1.3.4",
     "react-use": "^17.4.0",
-    "styled-components": "^6.0.0-rc.3",
+    "styled-components": "^6.1.11",
     "styled-normalize": "^8.0.7",
     "swiper": "^9.4.1",
     "typescript": "^5.1.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

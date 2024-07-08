@@ -1,6 +1,5 @@
 import React from "react";
-// import { Butterfly } from "../Components/Canvas/Butterfly";
-import { Butterflybg } from "./Canvas";
+import { Hero } from "./Canvas";
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
 import { Button } from "@mui/material";
@@ -56,7 +55,7 @@ const Home = () => {
     return (
 
         <section id="Home" >
-            <Butterflybg />
+            <Hero />
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {scrollTop && (
                     <div onClick={bottomToTop} className="backToTop" style={{ zIndex: 20, position: 'relative', top: -140, height: 45, width: 160, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -89,44 +88,6 @@ const Home = () => {
                     setPaginationTreeList(staticList.filter((tree) => tree.type === "Palm"))
                     setTreeList(staticList.filter((tree) => tree.type === "Palm"))
                 }} variant={stackIndex === 1 ? "contained" : "outlined"} style={stackIndex === 1 ? styles.selected : styles.unSelected}>Palms</Button>
-                <Button onClick={() => {
-                    setStackIndex(2)
-                    setPage(1)
-                    setPaginationTreeList(staticList.filter((tree) => tree.type === "Climbers"))
-                    setTreeList(staticList.filter((tree) => tree.type === "Climbers"))
-                }} variant={stackIndex === 2 ? "contained" : "outlined"} style={stackIndex === 2 ? styles.selected : styles.unSelected}>Climbers</Button>
-                <Button onClick={() => {
-                    setStackIndex(3)
-                    setPage(1)
-                    setPaginationTreeList(staticList.filter((tree) => tree.type === "Creepers"))
-                    setTreeList(staticList.filter((tree) => tree.type === "Creepers"))
-                }} variant={stackIndex === 3 ? "contained" : "outlined"} style={stackIndex === 3 ? styles.selected : styles.unSelected}>Creepers</Button>
-                <Button onClick={() => {
-                    setStackIndex(4)
-                    setPage(1)
-                    setPaginationTreeList(staticList.filter((tree) => tree.type === "Flowering Shurbs"))
-                    setTreeList(staticList.filter((tree) => tree.type === "Flowering Shurbs"))
-                }} variant={stackIndex === 4 ? "contained" : "outlined"} style={stackIndex === 4 ? styles.selected : styles.unSelected}>Flowering Shrubs</Button>
-                <Button onClick={() => {
-                    setStackIndex(5)
-                    setPage(1)
-                    setPaginationTreeList(staticList.filter((tree) => tree.type === "Foliage Shurbs"))
-                    setTreeList(staticList.filter((tree) => tree.type === "Foliage Shurbs"))
-                }} variant={stackIndex === 5 ? "contained" : "outlined"} style={stackIndex === 5 ? styles.selected : styles.unSelected}>Foliage Shrubs</Button>
-                <Button onClick={() => {
-                    setStackIndex(6)
-                    setPage(1)
-                    console.log("---")
-                    console.log(staticList.filter((tree) => tree.type === "Medicinal plants"))
-                    setPaginationTreeList(staticList.filter((tree) => tree.type === "Medicinal Plants"))
-                    setTreeList(staticList.filter((tree) => tree.type === "Medicinal Plants"))
-                }} variant={stackIndex === 6 ? "contained" : "outlined"} style={stackIndex === 6 ? styles.selected : styles.unSelected}>Medicinal plants</Button>
-                <Button onClick={() => {
-                    setStackIndex(7)
-                    setPage(1)
-                    setPaginationTreeList(staticList.filter((tree) => tree.type === "Indoor Plants"))
-                    setTreeList(staticList.filter((tree) => tree.type === "Indoor Plants"))
-                }} variant={stackIndex === 7 ? "contained" : "outlined"} style={stackIndex === 7 ? styles.selected : styles.unSelected}>Indoor plants</Button>
             </div>
 
 
@@ -148,7 +109,7 @@ const Home = () => {
             <div className="card-container" id="treecard" style={{ display: 'flex', flexDirection: 'row', marginTop: 32, justifyContent: 'space-evenly', alignItems: 'center', flexWrap: 'wrap' }}>
 
                 {
-                    treeList.slice(0,page*10).map((ele, index) => {
+                    treeList.slice(0,page*20).map((ele, index) => {
                         return (
                             isMobile ?
                                 <Responsivecard data={ele} />
@@ -207,17 +168,17 @@ const Home = () => {
 
 const styles = {
     selected: {
-        borderRadius: 20,
+        borderRadius: 0,
         backgroundColor: '#252525',
-        marginLeft: 20,
-        marginTop: 20
+        marginTop: 20,
+        width:'45vw',
     },
     unSelected: {
-        borderRadius: 20,
+        borderRadius: 0,
         borderColor: '#767676',
         color: '#767676',
-        marginLeft: 20,
-        marginTop: 20
+        marginTop: 20,
+        width:'45vw',
     }
 };
 

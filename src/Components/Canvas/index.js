@@ -1,4 +1,4 @@
 
-import Butterflybg from "./Butterfly";
+import Hero from "./Hero";
 
-export { Butterflybg };
+export { Hero };

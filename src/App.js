@@ -22,10 +22,7 @@ function App() {
        <Route exact path='/' element={<Landingpage/>} ></Route>
         <Route path="/Info" element={<Info/>} />
         <Route path="/imageview" element={<Imageviewer/>} />
-        <Route path="/map" element={<Map/>} />
-
-      
-      
+        <Route path="/map" element={<Map/>} />      
       </Routes>
       </Router>
     

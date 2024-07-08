@@ -43,9 +43,7 @@ const Navbar = () => {
           <Typography style={{fontWeight:600}}
   variant="h6"
   align="left"
-  color="grey.700"
   sx={{
-    backgroundcolor: "primary",
     backgroundImage: `linear-gradient(45deg, #90BBA1, #437137)`,
     backgroundSize: "100%",
     backgroundRepeat: "repeat",
@@ -54,7 +52,7 @@ const Navbar = () => {
     WebkitTextFillColor: "transparent"
   }}
 >
-  Woodie
+  IGCAR
 </Typography>   
           
         <img src={Woodie} style={{ width: 55, height: 55 }} />
@@ -71,18 +69,9 @@ const Navbar = () => {
             <li>
             <Link activeClass="active" smooth spy to="Stats"> Stats </Link>
             </li>
-            
+          
             <li>
             <Link activeClass="active" smooth spy to="About"> About </Link>
-            </li>
-            <li>
-            <Link activeClass="active" smooth spy to="Contact"> Contact Us </Link>
-            </li>
-
-            <li>
-              <Button onClick={()=> navigate("/map")} variant="contained" className='mapbtn' style={{background:'#252525',borderRadius:20,paddingRight:32,paddingLeft:32}} >
-                Map
-              </Button>
             </li>
           </ul>
         </div>

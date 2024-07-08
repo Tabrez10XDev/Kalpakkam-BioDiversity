@@ -13,6 +13,7 @@ const Contact = () => {
     const [comment, setComment] = useState("")
 
     async function uploadComment() {
+        <a ></a>
      
     }
 
@@ -71,7 +72,9 @@ const Contact = () => {
 
                                     style={{ width: 280, marginTop: 20, color: '#EEEE' }}
                                 />
-                                <Button onClick={uploadComment} variant="contained" style={{ background: '#252525', borderRadius: 10, marginTop: 32, paddingLeft: 20, paddingRight: 20, paddingTop: 10, paddingBottom: 10 }}> Submit</Button>
+                                <a
+                    href={`mailto:dir@igcar.gov.in?subject=${encodeURIComponent("Regarding BioDiversity Website from " + name) || ''}&body=${encodeURIComponent(comment) || ''}`}
+                               variant="contained" style={{ background: '#252525', borderRadius: 10, marginTop: 32, paddingLeft: 20, paddingRight: 20, paddingTop: 10, paddingBottom: 10 }}> Submit</a>
                                 {/* <TextField id="demo-helper-text-misaligned-no-helper" label="Mail" style={{width:280}} /> */}
                             </div>
                         </div>

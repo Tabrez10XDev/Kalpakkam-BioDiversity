@@ -1,9 +1,8 @@
 import React from "react";
-import tree from "./assets/treebg.jpg";
 import Woodie from '../Components/assets/woodie.png'
 import { Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
-
+import placeholder from "./assets/placeholder.jpeg"
 
 const Card = (props) => {
 
@@ -13,7 +12,8 @@ const Card = (props) => {
         try {
           return require(`./assets/${imagePath.trim()}/one.jpg`);
         } catch (err) {
-          return require('./assets/banner1.png'); // Path to your placeholder image
+
+            return require(`./assets/placeholder.jpeg`);
         }
       };
 
@@ -22,23 +22,17 @@ const Card = (props) => {
 
     return (
 
-        <div className="cardui" onClick={() => {
+        <div className="cardui card-shadow" onClick={() => {
             navigate(`/Info?tree=${props.data.name}`);
         }} style={{
-            width: 250, height: 300, justifyContent: 'center', backgroundColor: '#FFFF', borderRadius: 20, position: 'relative', shadowColor: "#000",
+            width: 250, height: 300, justifyContent: 'center', backgroundColor: '#FFFF', borderRadius: 6, position: 'relative', shadowColor: "#000",
             margin: 16,
-            shadowOffset: {
-                width: 0,
-                height: 2,
-            },
-            shadowOpacity: 0.35,
-            shadowRadius: 3.84,
+        
 
-            elevation: 5,
+            elevation: 4,
         }}    >
-            <img src={Woodie} style={{ width: 55, height: 55, position: 'absolute', marginTop: 150, paddingLeft: "40%" }} />
             <div className="imgcontainer" style={{ width: 250, height: 74 }}>
-                <img src={imageSrc} style={{ width: 250, borderTopLeftRadius: 20, borderTopRightRadius: 20, height:170, objectFit:'cover'}} />
+                <img src={imageSrc} style={{ width: 250, borderTopLeftRadius: 6, borderTopRightRadius: 6, height:170, objectFit:'cover'}} />
             </div>
 
             <p style={{ fontSize: 18, color: "#252525", fontWeight: 500, position: 'absolute', top: "64%", marginLeft: 16 }}>{props.data.name}</p>

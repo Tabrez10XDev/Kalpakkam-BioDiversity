@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 // import { Button } from "react-scroll";
 import { Button } from "@mui/material";
+// import placeholder from "./assets/placeholder.jpeg"
 
 
 
@@ -17,8 +18,8 @@ const Responsivecard=(props)=>{
         try {
           return require(`./assets/${imagePath.trim()}/one.jpg`);
         } catch (err) {
-          return require('./assets/banner1.png'); // Path to your placeholder image
-        }
+          return require(`./assets/placeholder.jpeg`);
+          }
       };
       
 
@@ -27,26 +28,17 @@ const Responsivecard=(props)=>{
 
     return(
         
-        <div className="cardui" onClick={()=>{
+        <div className="cardui card-shadow" onClick={()=>{
             navigate(`/Info?tree=${props.data.name}`);
-          }} style={{width:174,height:240,justifyContent:'center',backgroundColor:'#FFFF',borderRadius:14,position:'relative',shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.35,
-        shadowRadius: 3.84,
-        
-        elevation: 5,
-        marginTop:32 }}>
+          }} style={{width:174,height:240,justifyContent:'center',backgroundColor:'#FFFF',borderRadius:6,position:'relative',shadowColor: "#000",
+     }}>
             
          
 
-                    <img src={Woodie} style={{width:55,height:55,position:'absolute',marginTop:85,paddingLeft:"40%"}} />
 
                     <div className="imgcontainer" style={{width:174, height:64}}>
                         
-                    <img src={imageSrc} style={{ width: 174, borderTopLeftRadius: 20, borderTopRightRadius: 20, height:"200%", objectFit:'cover' }} />
+                    <img src={imageSrc} style={{ width: 174, borderTopLeftRadius: 6, borderTopRightRadius: 6, height:"200%", objectFit:'cover' }} />
                     </div>
                 
                     <p style={{fontSize:16,color:"#252525",fontWeight:500,position:'absolute',top:"55%",marginLeft:16}}>{props.data.name}</p>
